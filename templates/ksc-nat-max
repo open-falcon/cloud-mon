@@ -1,0 +1,11 @@
+[{% for metric in metrics %}
+    {
+        "endpoint": "NAT-{{ metric.region}}-{{ metric.ip}}",
+        "metric": "{{ metric.metric }}",
+        "counterType": "GAUGE",
+        "tags": "metric={{ metric.metric }}, Nat_ip={{ metric.ip }}, nat_id={{ metric.id }}",
+        "step": 600,
+        "timestamp": {{ metric.time }},
+        "value": {{ metric.value }}
+    }{% if not loop.last%},{% endif %}{% endfor %}
+]

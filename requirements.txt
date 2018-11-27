@@ -1,0 +1,14 @@
+pyyaml
+flask
+requests
+xmljson
+thrift
+boto3
+pytz
+aliyun-python-sdk-core
+aliyun-python-sdk-slb
+httplib2
+aliyun-python-sdk-cms
+aliyun-python-sdk-vpc
+oss2
+jinja2
