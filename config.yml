@@ -1,0 +1,40 @@
+falcon_url: 'http://127.0.0.1:1988/v1/push'
+metric: 'cloud2falcon'
+step: 60
+period: 13
+cloud:
+  - c_type: KSC
+    resource: elb
+    name: 'SLB'
+    to_falcon_template: 'ksc-elb'
+    ak: 'your access key'
+    sk: 'your secret key'
+    region: [{'name': 'cn-beijing-6', 'site': 'ksybj'}]
+    metric_list: ['slb.bps.in','slb.bps.out']
+
+  - c_type: KSC
+    resource: elb
+    name: 'SLB'
+    to_falcon_template: 'ksc-elb-max'
+    ak: 'your access key'
+    sk: 'your secret key'
+    region: [{'name': 'cn-beijing-6', 'site': 'ksybj'}]
+    metric_list: ['BandWidth']
+
+  - c_type: ALI
+    resource: connect
+    name: 'acs_express_connect'
+    to_falcon_template: 'ali-connect'
+    ak: 'your access key'
+    sk: 'your secret key'
+    region: [{"name": 'ap-southeast-5', "site": 'jktali'}]
+    metric_list: ['IntranetRX','ReceiveBandwidth']
+
+  - c_type: AWS
+    resource: NATGateway
+    name: 'NatGatewayId'
+    to_falcon_template: 'aws-nat'
+    ak: 'your access key'
+    sk: 'your secret key'
+    region: [{"name": 'ap-southeast-1', "site": 'sgpaws'}]
+    metric_list: ['ActiveConnectionCount', 'PacketsDropCount', 'ErrorPortAllocation']

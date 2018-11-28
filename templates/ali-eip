@@ -1,0 +1,11 @@
+[{% for metric in metrics %}
+    {
+        "endpoint": "eip-{{ metric.region}}-{{ metric.ip }}",
+        "metric": "{{ metric.metric }}",
+        "counterType": "GAUGE",
+        "tags": "metric={{ metric.metric }}, vip={{ metric.ip }}, id={{ metric.id }}",
+        "step": 60,
+        "timestamp": {{ metric.time }},
+        "value": {{ metric.value }}
+    }{% if not loop.last%},{% endif %}{% endfor %}
+]
